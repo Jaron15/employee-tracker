@@ -12,4 +12,4 @@ VALUES
 
 INSERT INTO employees (first_name, last_name, job_title, department, salary, manager)
 VALUES 
-('Jon', 'Smith', 1, 'Sales', 70000, 'Andrew');
+('Jon', 'Smith', 'Sales Manager', 'Sales', 70000, 'Andrew');

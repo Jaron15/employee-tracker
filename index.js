@@ -1,5 +1,10 @@
 const connection = require('./connection');
 const inquirer = require('inquirer');
+const  { showDepartments,
+    showRoles,
+    showEmployees, 
+    addDepartment,
+     } = require('./queries');
 
 function mainMenu() {
     inquirer
@@ -22,12 +27,15 @@ function mainMenu() {
 
         if (choice === "view all departments") {
             showDepartments();
+   
         } else if (choice === "view all roles") {
-            
+            showRoles();
+          
         } else if (choice === "view all employees") {
+            showEmployees();
             
         } else if (choice === "add a department") {
-            
+            depPrompt();
         } else if (choice === "add a role") {
             
         } else if (choice === "add an employee") {
@@ -37,3 +45,18 @@ function mainMenu() {
         }
     })
 }
+
+function depPrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the name of the department?'
+        }]).then(function(answers) {
+            const department = answers.name;
+
+            addDepartment(department);
+        })       
+}
+mainMenu()

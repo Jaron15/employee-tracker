@@ -28,18 +28,24 @@ function showEmployees() {
    })
 }
 
-function addDepartment() {
-    connection.query("INSERT INTO departments SET ?", {name: "HR"}, function(err, res) {
+function addDepartment(name) {
+    connection.query("INSERT INTO departments SET ?", {department: name}, function(err, res) {
        if (err) throw err;
  
         console.log(res.affectedRows);
-   
+        
+        showDepartments();
     })
  }
 
 // addDepartment();
-showDepartments();
-showRoles();
-showEmployees()
+// showDepartments();
+// showRoles();
+// showEmployees();
 
- module.exports = { showDepartments, addDepartment, }
+ module.exports = 
+ { showDepartments,
+    showRoles,
+    showEmployees, 
+    addDepartment,
+     }
