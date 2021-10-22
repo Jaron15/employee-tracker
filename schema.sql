@@ -3,12 +3,30 @@ CREATE DATABASE employee_db;
 
 USE employee_db;
 
-CREATE TABLE department (
+CREATE TABLE departments (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(25) NOT NULL UNIQUE
+    department VARCHAR(25) NOT NULL UNIQUE
 );
 
-CREATE TABLE employee (
+CREATE TABLE roles (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    
-)
+    role VARCHAR(25) NOT NULL,
+    salary INTEGER NOT NULL,
+    department VARCHAR(25) NOT NULL,
+    CONSTRAINT fk_department FOREIGN KEY (department) REFERENCES departments(department) ON DELETE CASCADE
+);
+
+CREATE TABLE employees (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    job_title INTEGER NOT NULL,
+    department VARCHAR(25) NOT NULL,
+    salary INTEGER NOT NULL,
+    manager VARCHAR(25) NOT NULL,
+    CONSTRAINT fk_job_title FOREIGN KEY (job_title) REFERENCES roles(id) ON DELETE CASCADE,
+    CONSTRAINT fk_empl_dep FOREIGN KEY (department) REFERENCES departments(department) ON DELETE CASCADE
+);
+ 
+-- including employee ids, first names, last names, job titles, departments,
+--  salaries, and managers that the employees report to
