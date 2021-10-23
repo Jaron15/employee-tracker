@@ -4,6 +4,7 @@ const  { showDepartments,
     showRoles,
     showEmployees, 
     addDepartment,
+    addRole
      } = require('./queries');
 
 function mainMenu() {
@@ -37,7 +38,7 @@ function mainMenu() {
         } else if (choice === "add a department") {
             depPrompt();
         } else if (choice === "add a role") {
-            
+            rolePrompt()
         } else if (choice === "add an employee") {
             
         } else if (choice === "update an employee role") {
@@ -45,7 +46,7 @@ function mainMenu() {
         }
     })
 }
-
+// inquirer functions
 function depPrompt() {
     inquirer
     .prompt([
@@ -59,4 +60,35 @@ function depPrompt() {
             addDepartment(department);
         })       
 }
+
+function rolePrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'role',
+            message: 'What is the name of the role?'
+        }, 
+        {
+            type: 'number',
+            name: 'salary',
+            message: 'What is the salary for this role?'
+        },
+        { 
+            type: 'input',
+            name: 'dep',
+            message: 'What department does this role belong to?'     
+        }]).then(function(answers) {
+            const role = answers.role;
+            const salary = answers.salary;
+            const dep = answers.dep;
+            console.log(role, salary, dep);
+
+            addRole(role, salary, dep);
+        })  
+
+}
 mainMenu()
+
+
+
