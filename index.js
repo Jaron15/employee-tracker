@@ -5,7 +5,8 @@ const  { showDepartments,
     showEmployees, 
     addDepartment,
     addRole,
-    addEmployee
+    addEmployee,
+    updateEmployeeRole
      } = require('./queries');
 
 function mainMenu() {
@@ -43,7 +44,7 @@ function mainMenu() {
         } else if (choice === "add an employee") {
             employeePrompt()
         } else if (choice === "update an employee role") {
-            
+            updatePrompt();
         }
     })
 }
@@ -135,6 +136,30 @@ function rolePrompt() {
             console.log(role, salary, dep);
 
             addRole(role, salary, dep);
+           
+        })  
+}
+
+function updatePrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'number',
+            name: 'id',
+            message: 'What is the ID number of this employee?'
+        }, 
+        {
+            type: 'input',
+            name: "role",
+            message: "what is the employee's new role?"
+        }
+      ]).then(function(answers) {
+            const role = answers.role;
+            const id = answers.id;
+      
+            console.log(role, id);
+
+            updateEmployeeRole(role, id);
            
         })  
 

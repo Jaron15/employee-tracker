@@ -32,11 +32,10 @@ function showEmployees() {
 function addDepartment(name) {
     connection.query("INSERT INTO departments SET ?", {department: name}, function(err, res) {
        if (err) throw err;
- 
-        console.log(res.affectedRows);
         
+        console.log('Department has been added!');
         showDepartments();
-        // mainMenu();
+        
     })
  }
 
@@ -45,6 +44,7 @@ function addDepartment(name) {
        if (err) throw err;
  
         console.log('Role has been added!');
+        showRoles();
         
     })
  }
@@ -54,6 +54,16 @@ function addDepartment(name) {
        if (err) throw err;
  
         console.log('Employee has been added!');
+        showEmployees();
+
+    })
+ }
+
+ function updateEmployeeRole(role, id) {
+    connection.query("UPDATE employees SET job_title = ? WHERE id = ?", [role, id], function(err, res) {
+       if (err) throw err;
+ 
+        console.log('Employee has been updated!');
         showEmployees();
 
     })
@@ -71,5 +81,6 @@ function addDepartment(name) {
     showEmployees, 
     addDepartment,
     addRole,
-    addEmployee
+    addEmployee,
+    updateEmployeeRole
      }

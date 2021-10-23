@@ -28,5 +28,3 @@ CREATE TABLE employees (
     CONSTRAINT fk_empl_dep FOREIGN KEY (department) REFERENCES departments(department) ON DELETE CASCADE
 );
  
--- including employee ids, first names, last names, job titles, departments,
---  salaries, and managers that the employees report to
