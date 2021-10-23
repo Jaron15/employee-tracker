@@ -49,6 +49,16 @@ function addDepartment(name) {
     })
  }
 
+ function addEmployee(firstName, lastName, jobTitle, dep, salary, manager) {
+    connection.query("INSERT INTO employees (first_name, last_name, job_title, department, salary, manager) VALUES (?, ?, ?, ?, ?, ?)", [firstName, lastName, jobTitle, dep, salary, manager], function(err, res) {
+       if (err) throw err;
+ 
+        console.log('Employee has been added!');
+        showEmployees();
+
+    })
+ }
+
 // addDepartment();
 // showDepartments();
 // showRoles();
@@ -60,5 +70,6 @@ function addDepartment(name) {
     showRoles,
     showEmployees, 
     addDepartment,
-    addRole
+    addRole,
+    addEmployee
      }

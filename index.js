@@ -4,7 +4,8 @@ const  { showDepartments,
     showRoles,
     showEmployees, 
     addDepartment,
-    addRole
+    addRole,
+    addEmployee
      } = require('./queries');
 
 function mainMenu() {
@@ -40,7 +41,7 @@ function mainMenu() {
         } else if (choice === "add a role") {
             rolePrompt()
         } else if (choice === "add an employee") {
-            
+            employeePrompt()
         } else if (choice === "update an employee role") {
             
         }
@@ -58,7 +59,56 @@ function depPrompt() {
             const department = answers.name;
 
             addDepartment(department);
+            
         })       
+}
+
+function employeePrompt() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'fname',
+            message: 'What is the first name of the employee?'
+        }, 
+        {
+            type: 'input',
+            name: 'lname',
+            message: 'What is the last name of the employee?'
+        },
+        { 
+            type: 'input',
+            name: 'role',
+            message: "What is this employee's job title?"     
+        },
+        { 
+            type: 'input',
+            name: 'dep',
+            message: 'What department is this employee in?' 
+        },
+        {
+            type: 'number',
+            name: 'salary',
+            message: "What is this employee's salary?"
+        },
+        { 
+            type: 'input',
+            name: 'manager',
+            message: 'What manager does this employee report to?'
+        }
+        ]).then(function(answers) {
+            const firstName = answers.fname;
+            const lastName = answers.lname;
+            const jobTitle = answers.role;
+            const dep = answers.dep;
+            const salary = answers.salary;
+            const manager = answers.manager;
+
+            console.log(firstName, lastName, jobTitle, dep, salary, manager);
+
+            addEmployee(firstName, lastName, jobTitle, dep, salary, manager);
+        })  
+
 }
 
 function rolePrompt() {
@@ -85,6 +135,7 @@ function rolePrompt() {
             console.log(role, salary, dep);
 
             addRole(role, salary, dep);
+           
         })  
 
 }
