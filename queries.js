@@ -3,27 +3,29 @@ const inquirer = require('inquirer');
 
 
 function showDepartments() {
-    connection.query("SELECT * FROM departments", function(err, res) {
-       if (err) throw err;
-       const departments = res;
-       console.table(departments)
-
-   })
+    return connection.promise().query("SELECT * FROM departments"
+    //    if (err) throw err;
+    //    const departments = res;
+    //    console.log('/n');
+    //    console.table(departments)
+   )
 }
 
 function showRoles() {
     connection.query("SELECT * FROM roles", function(err, res) {
        if (err) throw err;
        const roles = res;
+       console.log('/n');
        console.table(roles);
 
-   })
+   }).then(mainMenu())
 };
 
 function showEmployees() {
     connection.query("SELECT * FROM employees", function(err, res) {
        if (err) throw err;
        const employees = res;
+       console.log('/n');
        console.table(employees);
 
    })
@@ -68,12 +70,6 @@ function addDepartment(name) {
 
     })
  }
-
-// addDepartment();
-// showDepartments();
-// showRoles();
-// showEmployees();
-// addRole()
 
  module.exports = 
  { showDepartments,
