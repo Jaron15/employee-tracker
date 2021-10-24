@@ -32,14 +32,6 @@ function mainMenu() {
       if (choice === "view all departments") {
         showDepartments();
         mainMenu();
-        //   .then((data) => {
-        //     console.log("/n");
-        //     console.table(data[0]);
-        //   })
-        //   .then(
-        //       );
-
-        // mainMenu();
       } else if (choice === "view all roles") {
         showRoles();
         mainMenu();
