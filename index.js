@@ -30,12 +30,14 @@ function mainMenu() {
       const choice = answers.action;
 
       if (choice === "view all departments") {
-        showDepartments()
-          .then((data) => {
-            console.log("/n");
-            console.table(data[0]);
-          })
-          .then(mainMenu());
+        showDepartments();
+        mainMenu();
+        //   .then((data) => {
+        //     console.log("/n");
+        //     console.table(data[0]);
+        //   })
+        //   .then(
+        //       );
 
         // mainMenu();
       } else if (choice === "view all roles") {
@@ -69,6 +71,7 @@ function depPrompt() {
       const department = answers.name;
 
       addDepartment(department);
+      mainMenu();
     });
 }
 
@@ -117,6 +120,8 @@ function employeePrompt() {
       console.log(firstName, lastName, jobTitle, dep, salary, manager);
 
       addEmployee(firstName, lastName, jobTitle, dep, salary, manager);
+
+      mainMenu();
     });
 }
 
@@ -146,6 +151,8 @@ function rolePrompt() {
       console.log(role, salary, dep);
 
       addRole(role, salary, dep);
+
+      mainMenu();
     });
 }
 
@@ -170,6 +177,8 @@ function updatePrompt() {
       console.log(role, id);
 
       updateEmployeeRole(role, id);
+
+      mainMenu();
     });
 }
 mainMenu();
