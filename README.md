@@ -16,8 +16,10 @@ For this project I used mysql, inquirer, and Node.js to create a command line ap
 # Installation 
 Once you clone the repostiory, install the required packages with npm install. Set up the database by starting up a mysql shell and running the schema and seeds files with SOURCE schema.sql and SOURCE seeds.sql. 
 
+*Dont forget to enter your mysql password in the connection file 
+
 # References
 
 Link to repository: https://github.com/Jaron15/employee-tracker.git
 
-Instructional video: 
+Instructional video: https://watch.screencastify.com/v/gSB6JSuO1RenYZYNFDfO
