@@ -22,4 +22,4 @@ Once you clone the repostiory, install the required packages with npm install. S
 
 Link to repository: https://github.com/Jaron15/employee-tracker.git
 
-Instructional video: https://watch.screencastify.com/v/gSB6JSuO1RenYZYNFDfO
+Walkthrough video: https://watch.screencastify.com/v/gSB6JSuO1RenYZYNFDfO
